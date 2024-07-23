@@ -26,9 +26,14 @@ function sortear() {
         sorteados.push(numero);
     }
 
+    let sorteadosSeparados = sorteados.slice(0, -1);
+
     let resultado = document.getElementById('resultado');
-    resultado.innerHTML = `<label class="texto__paragrafo">Números sorteados: ${sorteados}</label>
-    </div>`;
+    if(quantidade>1){
+        resultado.innerHTML = `<label class="texto__paragrafo">Números sorteados: ${sorteadosSeparados} e ${sorteados[sorteados.length-1]}</label></div>`;
+    } else{
+        resultado.innerHTML = `<label class="texto__paragrafo">Números sorteados: ${sorteados}</label></div>`;
+    }
 
     alterarStatusDoBotao();
 }
