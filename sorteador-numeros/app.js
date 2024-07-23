@@ -3,6 +3,16 @@ function sortear() {
     let numInicial = parseInt(document.getElementById('de').value);
     let numFinal = parseInt(document.getElementById('ate').value);
 
+    if (numInicial>numFinal) {
+        alert('Campo "Do número" deve ser inferior ao campo "Até o número". Verifique!');
+        return; 
+    }
+
+    if (quantidade > (numFinal - numInicial + 1)) {
+        alert (`Não há ${quantidade} números entre ${numInicial} e ${numFinal}`)
+        return;
+    }
+
     let sorteados = [];
     let numero;
 
