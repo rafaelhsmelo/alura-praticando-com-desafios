@@ -1,13 +1,17 @@
+
+//Sorteia os números quando clica no botão
 function sortear() {
     let quantidade = parseInt(document.getElementById('quantidade').value);
     let numInicial = parseInt(document.getElementById('de').value);
     let numFinal = parseInt(document.getElementById('ate').value);
 
+    //Checa se os números do trecho estão em ordem válida
     if (numInicial>numFinal) {
         alert('Campo "Do número" deve ser inferior ao campo "Até o número". Verifique!');
         return; 
     }
 
+    //Checa se há números únicos suficientes no trecho dado
     if (quantidade > (numFinal - numInicial + 1)) {
         alert (`Não há ${quantidade} números entre ${numInicial} e ${numFinal}`)
         return;
@@ -16,15 +20,19 @@ function sortear() {
     let sorteados = [];
     let numero;
 
+    //Loop para gerar quantidade de números pedida
     for (let i = 0; i < quantidade; i++) {
         numero = gerardorDeNumAleatorio(numInicial,numFinal);
 
+        //Loop para garantir que não haja repetição
         while (sorteados.includes(numero)) {
             numero = gerardorDeNumAleatorio(numInicial,numFinal);
         }
 
         sorteados.push(numero);
     }
+
+    sorteados.sort(function(a, b){return a-b});
 
     let sorteadosSeparados = sorteados.slice(0, -1);
 
