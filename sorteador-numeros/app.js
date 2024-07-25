@@ -5,6 +5,10 @@ function sortear() {
     let numInicial = parseInt(document.getElementById('de').value);
     let numFinal = parseInt(document.getElementById('ate').value);
 
+    validador(quantidade,'a quantidade');
+    validador(numInicial,'o número inicial');
+    validador(numFinal,'o número final');
+
     //Checa se os números do trecho estão em ordem válida
     if (numInicial>numFinal) {
         alert('Campo "Do número" deve ser inferior ao campo "Até o número". Verifique!');
@@ -47,6 +51,13 @@ function sortear() {
     }
 
     alterarStatusDoBotao();
+}
+
+function validador(num,texto){
+    if (isNaN(num)) {
+        alert (`O valor d${texto} não é válido`);
+    }
+    return num;
 }
 
 function gerardorDeNumAleatorio(min, max) {
