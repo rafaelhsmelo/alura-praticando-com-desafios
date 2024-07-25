@@ -32,10 +32,13 @@ function sortear() {
         sorteados.push(numero);
     }
 
+    //Organiza crescentemente os números sorteados
     sorteados.sort(function(a, b){return a-b});
 
+    //Separa o último item da lista para listar como "X, Y '1' Z"
     let sorteadosSeparados = sorteados.slice(0, -1);
 
+    //Lista os resultados
     let resultado = document.getElementById('resultado');
     if(quantidade>1){
         resultado.innerHTML = `<label class="texto__paragrafo">Números sorteados: ${sorteadosSeparados} e ${sorteados[sorteados.length-1]}</label></div>`;
