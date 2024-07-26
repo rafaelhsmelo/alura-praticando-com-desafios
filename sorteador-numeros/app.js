@@ -5,9 +5,12 @@ function sortear() {
     let numInicial = parseInt(document.getElementById('de').value);
     let numFinal = parseInt(document.getElementById('ate').value);
 
-    validador(quantidade,'a quantidade');
-    validador(numInicial,'o número inicial');
-    validador(numFinal,'o número final');
+    // Verifica se os campos estão preenchidos
+    if (isNaN(quantidade) || isNaN(numInicial) || isNaN(numFinal)) {
+        alert('Por favor, preencha todos os campos com valores válidos.');
+        return;
+    }
+
 
     //Checa se os números do trecho estão em ordem válida
     if (numInicial>numFinal) {
@@ -18,6 +21,11 @@ function sortear() {
     //Checa se há números únicos suficientes no trecho dado
     if (quantidade > (numFinal - numInicial + 1)) {
         alert (`Não há ${quantidade} números entre ${numInicial} e ${numFinal}`)
+        return;
+    }
+
+    if (quantidade < 1) {
+        alert ('A quantidade de números não é válida');
         return;
     }
 
@@ -37,49 +45,45 @@ function sortear() {
     }
 
     //Organiza crescentemente os números sorteados
-    sorteados.sort(function(a, b){return a-b});
+    sorteados.sort(function(a, b) { return a - b; });
 
     //Separa o último item da lista para listar como "X, Y '1' Z"
     let sorteadosSeparados = sorteados.slice(0, -1);
 
     //Lista os resultados
     let resultado = document.getElementById('resultado');
-    if(quantidade>1){
+    if (quantidade>1) {
         resultado.innerHTML = `<label class="texto__paragrafo">Números sorteados: ${sorteadosSeparados} e ${sorteados[sorteados.length-1]}</label></div>`;
-    } else{
+    } else {
         resultado.innerHTML = `<label class="texto__paragrafo">Números sorteados: ${sorteados}</label></div>`;
     }
-
-    alterarStatusDoBotao();
+    
 }
 
-function validador(num,texto){
-    if (isNaN(num)) {
-        alert (`O valor d${texto} não é válido`);
-    }
-    return num;
-}
-
+//Gera os números aleatórios
 function gerardorDeNumAleatorio(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function alterarStatusDoBotao(){
-    let botao = document.getElementById('btn-reiniciar');
-    if (botao.classList.contains('container__botao-desabilitado')) {
-        botao.classList.remove('container__botao-desabilitado');
-        botao.classList.add('container__botao');
-    } else {
-        botao.classList.remove('container__botao');
-        botao.classList.add('container__botao-desabilitado');
-    }
-}
+//inverte as cores dos botões
+// function alterarStatusDoBotao(){
+//     let botao = document.getElementById('btn-reiniciar');
+//     if (botao.classList.contains('container__botao-desabilitado')) {
+//         botao.classList.remove('container__botao-desabilitado');
+//         botao.classList.add('container__botao');
+//     } else {    
+//         botao.classList.remove('container__botao');
+//         botao.classList.add('container__botao-desabilitado');
+//     }
+// }
 
-function reiniciar (){
+//reinicia os valores e o resultado
+function reiniciar() {
     document.getElementById('quantidade').value = '';
     document.getElementById('de').value = '';
     document.getElementById('ate').value = '';
-    document.getElementById('resultado').value = 'Números sorteados:  nenhum até agora';
-    alterarStatusDoBotao();
+    document.getElementById('resultado').innerHTML = '<label class="texto__paragrafo">Números sorteados: nenhum até agora</label>';
 }
+
+
 
