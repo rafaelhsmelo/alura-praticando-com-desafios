@@ -43,7 +43,7 @@ function sortear() {
     }
 
     // Organiza crescentemente os números sorteados
-    sorteados.sort(function(a, b) { return a - b; });
+    sorteados.sort(function (a, b) { return a - b; });
 
     // Separa o último item da lista para listar como "X, Y '1' Z"
     let sorteadosSeparados = sorteados.slice(0, -1);
@@ -93,7 +93,7 @@ function reiniciar() {
 }
 
 // Inicializa os estados dos botões ao carregar a página
-window.onload = function() {
+window.onload = function () {
     alterarStatusDoBotao('btn-reiniciar', true);
     alterarStatusDoBotao('btn-sortear', false);
 }
