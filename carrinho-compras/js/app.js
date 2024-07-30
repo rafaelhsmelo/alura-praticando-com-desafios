@@ -1,19 +1,37 @@
-function adicionar(params) {
-    let item = document.getElementById('produto').value; //Encontra texto que descreve item e preço
-    let preco = parseInt(item.substring((item.search('-') + 4))); //Separa o valor do item
-    let nomeItem = item.substring(0, (item.search('-') - 1)); //Separa o nome do item
-    let quantidade = document.getElementById('quantidade').value; //Encontra a quantidade 
-    let carrinho = [];
-    let total = document.getElementById('valor-total').innerText;
+let totalCarrinho = 0;
+document.getElementById('lista-produtos').innerHTML = '';
+document.getElementById('calor-total').textContent = `R$ 0`;
 
-    alert(total+'  '+carrinho);
+function adicionar(params) {
+    
+    let item = document.getElementById('produto').value; 
+    let itemNome = item.split('-')[0];
+    let itemValor = item.split('R$')[1];
+    let quantidade = document.getElementById('quantidade').value; 
+    let subTotal = quantidade * itemValor;
+
+    let carrinho = document.getElementById('lista-produtos');
+    carrinho.innerHTML += `<section class="carrinho__produtos__produto">
+          <span class="texto-azul">${quantidade}</span> ${itemNome} <span class="texto-azul">${subTotal}</span>
+        </section>`;
+
+    totalCarrinho += subTotal;
+    let totalExibido = document.getElementById('valor-total');
+    totalExibido.textContent = `R$ ${totalCarrinho}`;
+
+    document.getElementById('quantidade').value = 0;
 
     // if (quantidade < 1 || isNaN(quantidade)) { //Checa se quantidade é valida
     //     return;
     // } else {
     // }
+
+
+
 }
 
 function limpar() {
-
+    totalCarrinho = 0;
+    document.getElementById('lista-produtos').innerHTML = '';
+    document.getElementById('calor-total').textContent = `R$ 0`;
 }
