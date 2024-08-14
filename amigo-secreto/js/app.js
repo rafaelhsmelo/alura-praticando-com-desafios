@@ -22,14 +22,15 @@ function adicionar() {
 }
 
 function sortear() {
+    
+    // Cria um array em branco com os nomes adicionados em ordem aleatória
     let arraySorteados = [];
-
     for (let i = 0; i < arrayAmigos.length; i++) {
         let sorteado = arrayAmigos[Math.round(Math.random() * (arrayAmigos.length - 1))];
 
-        while (arraySorteados.includes(sorteado)) {
+        // Loop para não repetir nome nem sortear a si mesmo
+        while (arraySorteados.includes(sorteado) || sorteado == arrayAmigos[i]) {
             sorteado = arrayAmigos[Math.round(Math.random() * (arrayAmigos.length - 1))];
-
         }
         arraySorteados.push(sorteado);
     }
