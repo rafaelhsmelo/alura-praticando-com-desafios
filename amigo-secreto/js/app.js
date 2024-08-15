@@ -1,5 +1,5 @@
 // Inicia a lista vazia
-let arrayAmigos = ['rafael', 'suelem', 'adail', 'sales'];
+let arrayAmigos = [];
 let listaAmigos = document.getElementById('lista-amigos');
 let listaSorteio = document.getElementById('lista-sorteio');
 
@@ -23,7 +23,7 @@ function adicionar() {
 
 function sortear() {
     
-    // Cria um array em branco com os nomes adicionados em ordem aleatória
+    // Cria um array com os nomes adicionados em ordem aleatória
     let arraySorteados = [];
     for (let i = 0; i < arrayAmigos.length; i++) {
         let sorteado = arrayAmigos[Math.round(Math.random() * (arrayAmigos.length - 1))];
@@ -35,8 +35,8 @@ function sortear() {
         arraySorteados.push(sorteado);
     }
 
+    // Cria a lista de sorteados combinando os dois array
     let listaSorteados = '';
-
     arrayAmigos.forEach((item,index) => {
         listaSorteados += `${item} -> ${arraySorteados[index]}\n`;
     });
