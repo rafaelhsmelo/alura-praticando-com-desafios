@@ -22,6 +22,12 @@ function adicionar() {
 }
 
 function sortear() {
+
+    // Checa se há ao menos 3 nomes para sortear
+    if (arrayAmigos.length < 3){
+        alert('São necessários mais amigos antes de sortear');
+        return;
+    }
     
     // Cria um array com os nomes adicionados em ordem aleatória
     let arraySorteados = [];
